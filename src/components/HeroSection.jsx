@@ -122,14 +122,12 @@ export default function HeroSection({ onOpen }) {
             style={{ marginBottom: '3.5rem', position: 'relative' }}
           >
             <div style={{ position: 'relative', display: 'inline-block' }}>
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
+              <div
                 style={{
                   position: 'absolute',
                   inset: '-12px',
                   borderRadius: '50%',
-                  border: '1px dashed rgba(196,148,58,0.4)',
+                  border: '1.5px dashed rgba(196,148,58,0.5)',
                   pointerEvents: 'none',
                 }}
               />
@@ -145,7 +143,9 @@ export default function HeroSection({ onOpen }) {
                   padding: '6px',
                   background: 'rgba(255,255,255,0.6)',
                   position: 'relative',
-                  zIndex: 1
+                  zIndex: 1,
+                  willChange: 'transform',
+                  transform: 'translateZ(0)'
                 }}
               />
             </div>
