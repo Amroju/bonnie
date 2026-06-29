@@ -33,6 +33,10 @@ export default function AppleEmoji({ emoji, style = {}, className = "" }) {
         verticalAlign: '-0.1em',
         display: 'inline-block',
         pointerEvents: 'none',
+        backfaceVisibility: 'hidden',
+        WebkitBackfaceVisibility: 'hidden',
+        transform: 'translateZ(1px)',
+        WebkitTransform: 'translateZ(1px)',
         ...style
       }}
     />
