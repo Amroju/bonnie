@@ -94,7 +94,7 @@ export default function HeroSection({ onOpen }) {
     window.dispatchEvent(new Event('play-music'));
     setTimeout(() => {
       setStage('opened');
-    }, 900);
+    }, 600);
   };
 
   return (
@@ -116,9 +116,9 @@ export default function HeroSection({ onOpen }) {
       <AnimatePresence>
         {stage === 'opened' && (
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.4 }}
+            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
             style={{ marginBottom: '3.5rem', position: 'relative' }}
           >
             <div style={{ position: 'relative', display: 'inline-block' }}>
