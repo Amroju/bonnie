@@ -162,6 +162,19 @@ function LightboxModal({ activePhoto, onClose, onNext, onPrev }) {
               alt="" 
               style={{ width: '100%', height: '100%', objectFit: 'contain', borderRadius: '4px' }} 
             />
+            {/* Cute handwritten text */}
+            <div style={{
+              position: 'absolute',
+              bottom: '0.6rem',
+              right: '1.2rem',
+              fontFamily: '"Dancing Script", cursive',
+              fontSize: '1.4rem',
+              color: '#8B1A1A',
+              transform: 'rotate(-4deg)',
+              opacity: 0.85
+            }}>
+              Giramiii ⤵
+            </div>
           </div>
 
           {/* Back of Polaroid (Message) */}

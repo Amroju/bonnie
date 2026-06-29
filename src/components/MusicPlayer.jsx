@@ -87,7 +87,7 @@ export default function MusicPlayer({ visible }) {
     };
   }, []);
 
-  const togglePlay = useCallback(async () => {
+  const togglePlay = useCallback(async (forcePlay) => {
     const a = audioRef.current;
     if (!a) return;
     
@@ -96,12 +96,27 @@ export default function MusicPlayer({ visible }) {
       await audioCtxRef.current.resume();
     }
     
-    if (playing) { a.pause(); setPlaying(false); }
-    else {
-      try { await a.play(); setPlaying(true); }
-      catch { setPlaying(p => !p); }
+    const shouldPlay = typeof forcePlay === 'boolean' ? forcePlay : !playing;
+
+    if (!shouldPlay) { 
+      a.pause(); 
+      setPlaying(false); 
+    } else {
+      try { 
+        await a.play(); 
+        setPlaying(true); 
+      } catch (e) { 
+        console.log("Play failed", e);
+        setPlaying(false); 
+      }
     }
   }, [playing]);
+
+  useEffect(() => {
+    const handlePlayEvent = () => togglePlay(true);
+    window.addEventListener('play-music', handlePlayEvent);
+    return () => window.removeEventListener('play-music', handlePlayEvent);
+  }, [togglePlay]);
 
   const seek = (e) => {
     const a = audioRef.current;

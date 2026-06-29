@@ -91,6 +91,7 @@ export default function HeroSection({ onOpen }) {
     if (stage !== 'sealed') return;
     setStage('opening');
     onOpen && onOpen();
+    window.dispatchEvent(new Event('play-music'));
     setTimeout(() => {
       setStage('opened');
     }, 900);
