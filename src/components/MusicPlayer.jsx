@@ -51,7 +51,15 @@ export default function MusicPlayer({ visible }) {
     if (!a) return;
     const onTime = () => { setCur(a.currentTime); setProg(a.duration ? (a.currentTime / a.duration) * 100 : 0); };
     const onMeta = () => setDur(a.duration);
-    const onEnd  = () => setPlaying(false);
+    const onEnd  = async () => {
+      a.currentTime = 0;
+      try {
+        await a.play();
+        setPlaying(true);
+      } catch (e) {
+        setPlaying(false);
+      }
+    };
     a.addEventListener('timeupdate', onTime);
     a.addEventListener('loadedmetadata', onMeta);
     a.addEventListener('ended', onEnd);

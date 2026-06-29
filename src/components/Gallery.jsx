@@ -162,18 +162,6 @@ function LightboxModal({ activePhoto, onClose, onNext, onPrev }) {
               alt="" 
               style={{ width: '100%', height: '100%', objectFit: 'contain', borderRadius: '4px' }} 
             />
-            <div style={{ 
-              position: 'absolute', 
-              bottom: '0.8rem', 
-              width: '100%', 
-              textAlign: 'center',
-              left: 0,
-              fontSize: '1rem',
-              color: 'rgba(0,0,0,0.4)',
-              fontFamily: 'monospace'
-            }}>
-              Clicca per girare ⤵
-            </div>
           </div>
 
           {/* Back of Polaroid (Message) */}
@@ -318,7 +306,8 @@ export default function Gallery() {
                   WebkitTransform: `rotate(${photo.rotate}deg)`,
                   width: '100%',
                   cursor: 'pointer',
-                  boxSizing: 'border-box'
+                  boxSizing: 'border-box',
+                  willChange: 'transform' // Performance boost
                 }}
                 initial={{ opacity: 0, y: 30, rotate: photo.rotate - 5 }}
                 whileInView={{ opacity: 1, y: 0, rotate: photo.rotate }}
@@ -330,6 +319,7 @@ export default function Gallery() {
                 <img 
                   src={photo.src} 
                   alt="" 
+                  loading="lazy"
                   className="gallery-img-vintage"
                   style={{ width: '100%', display: 'block', borderRadius: '4px 4px 0 0', objectFit: 'cover' }} 
                 />

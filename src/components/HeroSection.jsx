@@ -67,9 +67,9 @@ function FloatingRoses() {
             bottom: r.bottom,
             left: r.left,
             right: r.right,
-            opacity: r.op,
-            filter: `blur(${r.blur}px)`,
-            transformOrigin: 'center'
+            opacity: r.op * 0.7, // reduce opacity slightly to simulate depth instead of blur
+            transformOrigin: 'center',
+            willChange: 'transform' // Force GPU acceleration
           }}
           animate={{
             rotate: [r.rot, r.rot + 15, r.rot],
